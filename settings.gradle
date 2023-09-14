@@ -1,0 +1,28 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.namespace == "com.github.dcendents") {
+                useModule("com.github.dcendents:android-maven-gradle-plugin:1.5")
+            }
+            if (requested.id.namespace == "com.google.firebase") {
+                useModule("com.google.firebase:firebase-crashlytics-gradle:2.9.2")
+            }
+        }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+}
+rootProject.name = "dora-firebase-support"
+include ':lib'
