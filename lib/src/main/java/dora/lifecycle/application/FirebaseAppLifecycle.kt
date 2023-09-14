@@ -13,11 +13,11 @@ class FirebaseAppLifecycle : ApplicationLifecycleCallbacks {
     }
 
     override fun onCreate(application: Application) {
-        val remoteConfig: FirebaseRemoteConfig = Firebase.remoteConfig
-        val configSettings = remoteConfigSettings {
-            minimumFetchIntervalInSeconds = 3600
-        }
-        remoteConfig.setConfigSettingsAsync(configSettings)
+//        val remoteConfig: FirebaseRemoteConfig = Firebase.remoteConfig
+//        val configSettings = remoteConfigSettings {
+//            minimumFetchIntervalInSeconds = 3600
+//        }
+//        remoteConfig.setConfigSettingsAsync(configSettings)
     }
 
     override fun onTerminate(application: Application) {

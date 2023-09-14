@@ -2,9 +2,11 @@ package dora.firebase
 
 import android.app.Activity
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.firebase.analytics.FirebaseAnalytics
+import dora.util.RomUtils
 
 object SpmUtils {
 
@@ -307,6 +309,8 @@ object SpmUtils {
      * @see PARAM_ITEMS
      */
     const val EVENT_VIEW_PROMOTION = FirebaseAnalytics.Event.VIEW_PROMOTION
+
+    const val PARAM_DEVICE_ID = "device_id"
 
     /**
      * 已解锁成就的 ID。
@@ -753,6 +757,7 @@ object SpmUtils {
                        paymentType: String? = null, items: Array<SpmItem>) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_CURRENCY, currency)
         params.putDouble(PARAM_VALUE, value)
         params.putString(PARAM_COUPON, coupon)
@@ -784,6 +789,7 @@ object SpmUtils {
                         shippingTier: String? = null, items: Array<SpmItem>) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_CURRENCY, currency)
         params.putDouble(PARAM_VALUE, value)
         params.putString(PARAM_COUPON, coupon)
@@ -814,6 +820,7 @@ object SpmUtils {
     fun addToCart(context: Context, currency: String, value: Double, items: Array<SpmItem>) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_CURRENCY, currency)
         params.putDouble(PARAM_VALUE, value)
         params.putParcelableArray(PARAM_ITEMS, items)
@@ -840,6 +847,7 @@ object SpmUtils {
     fun addToWishlist(context: Context, currency: String, value: Double, items: Array<SpmItem>) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_CURRENCY, currency)
         params.putDouble(PARAM_VALUE, value)
         params.putParcelableArray(PARAM_ITEMS, items)
@@ -867,6 +875,7 @@ object SpmUtils {
                       items: Array<SpmItem>) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_CURRENCY, currency)
         params.putDouble(PARAM_VALUE, value)
         params.putString(PARAM_COUPON, coupon)
@@ -897,6 +906,7 @@ object SpmUtils {
     fun earnVirtualCurrency(context: Context, virtualCurrencyName: String?, value: Double?) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_VIRTUAL_CURRENCY_NAME, virtualCurrencyName)
         if (value != null) {
             params.putDouble(PARAM_VALUE, value)
@@ -927,6 +937,7 @@ object SpmUtils {
     fun generateLead(context: Context, currency: String, value: Double) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_CURRENCY, currency)
         params.putDouble(PARAM_VALUE, value)
         firebaseAnalytics.logEvent(EVENT_GENERATE_LEAD, params)
@@ -954,6 +965,7 @@ object SpmUtils {
     fun joinGroup(context: Context, groupId: String?) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_GROUP_ID, groupId)
         firebaseAnalytics.logEvent(EVENT_JOIN_GROUP, params)
     }
@@ -978,6 +990,7 @@ object SpmUtils {
     fun levelEnd(context: Context, levelName: String?, success: Boolean?) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_LEVEL_NAME, levelName)
         if (success != null) {
             params.putBoolean(PARAM_SUCCESS, success)
@@ -1005,6 +1018,7 @@ object SpmUtils {
     fun levelStart(context: Context, levelName: String?) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_LEVEL_NAME, levelName)
         firebaseAnalytics.logEvent(EVENT_LEVEL_START, params)
     }
@@ -1029,6 +1043,7 @@ object SpmUtils {
     fun levelUp(context: Context, level: Int?, character: String?) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         if (level != null) {
             params.putInt(PARAM_LEVEL, level)
         }
@@ -1056,6 +1071,7 @@ object SpmUtils {
     fun login(context: Context, method: String?) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_METHOD, method)
         firebaseAnalytics.logEvent(EVENT_LOGIN, params)
     }
@@ -1080,6 +1096,7 @@ object SpmUtils {
     fun postScore(context: Context, score: Long, level: Int?, character: String?) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putLong(PARAM_SCORE, score)
         if (level != null) {
             params.putInt(PARAM_LEVEL, level)
@@ -1109,6 +1126,7 @@ object SpmUtils {
                  coupon: String?, shipping: Double?, tax: Double?, items: Array<SpmItem>) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_CURRENCY, currency)
         params.putString(PARAM_TRANSACTION_ID, transactionId)
         params.putDouble(PARAM_VALUE, value)
@@ -1146,6 +1164,7 @@ object SpmUtils {
                  coupon: String?, shipping: Double?, tax: Double?, items: Array<SpmItem>) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_CURRENCY, currency)
         params.putString(PARAM_TRANSACTION_ID, transactionId)
         params.putDouble(PARAM_VALUE, value)
@@ -1182,6 +1201,7 @@ object SpmUtils {
     fun removeFromCart(context: Context, currency: String, value: Double, items: Array<SpmItem>) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_CURRENCY, currency)
         params.putDouble(PARAM_VALUE, value)
         params.putParcelableArray(PARAM_ITEMS, items)
@@ -1209,6 +1229,7 @@ object SpmUtils {
     fun search(context: Context, searchTerm: String) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_SEARCH_TERM, searchTerm)
         firebaseAnalytics.logEvent(EVENT_SEARCH, params)
     }
@@ -1235,6 +1256,7 @@ object SpmUtils {
     fun selectContent(context: Context, contentType: String?) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_CONTENT_TYPE, contentType)
         firebaseAnalytics.logEvent(EVENT_SELECT_CONTENT, params)
     }
@@ -1259,6 +1281,7 @@ object SpmUtils {
     fun selectItem(context: Context, itemListId: String?, itemListName: String?, items: Array<SpmItem>) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_ITEM_LIST_ID, itemListId)
         params.putString(PARAM_ITEM_LIST_NAME, itemListName)
         params.putParcelableArray(PARAM_ITEMS, items)
@@ -1286,6 +1309,7 @@ object SpmUtils {
                         promotionId: String?, promotionName: String?, items: Array<SpmItem>) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_CREATIVE_NAME, creativeName)
         params.putString(PARAM_CREATIVE_SLOT, creativeSlot)
         params.putString(PARAM_PROMOTION_ID, promotionId)
@@ -1317,6 +1341,7 @@ object SpmUtils {
     fun share(context: Context, method: String?, contentType: String?, itemId: String?) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_METHOD, method)
         params.putString(PARAM_CONTENT_TYPE, contentType)
         params.putString(PARAM_ITEM_ID, itemId)
@@ -1343,6 +1368,7 @@ object SpmUtils {
     fun signUp(context: Context, method: String?) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_METHOD, method)
         firebaseAnalytics.logEvent(EVENT_SIGN_UP, params)
     }
@@ -1367,6 +1393,7 @@ object SpmUtils {
     fun spendVirtualCurrency(context: Context, value: Double, virtualCurrencyName: String, itemName: String?) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putDouble(PARAM_VALUE, value)
         params.putString(PARAM_VIRTUAL_CURRENCY_NAME, virtualCurrencyName)
         params.putString(PARAM_ITEM_NAME, itemName)
@@ -1392,7 +1419,9 @@ object SpmUtils {
      */
     fun tutorialBegin(context: Context) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
-        firebaseAnalytics.logEvent(EVENT_TUTORIAL_BEGIN, null)
+        val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
+        firebaseAnalytics.logEvent(EVENT_TUTORIAL_BEGIN, params)
     }
 
     /**
@@ -1414,7 +1443,9 @@ object SpmUtils {
      */
     fun tutorialComplete(context: Context) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
-        firebaseAnalytics.logEvent(EVENT_TUTORIAL_COMPLETE, null)
+        val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
+        firebaseAnalytics.logEvent(EVENT_TUTORIAL_COMPLETE, params)
     }
 
     /**
@@ -1437,6 +1468,7 @@ object SpmUtils {
     fun unlockAchievement(context: Context, achievementId: String) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_ACHIEVEMENT_ID, achievementId)
         firebaseAnalytics.logEvent(EVENT_UNLOCK_ACHIEVEMENT, params)
     }
@@ -1461,6 +1493,7 @@ object SpmUtils {
     fun viewCart(context: Context, currency: String, value: Double, items: Array<SpmItem>) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_CURRENCY, currency)
         params.putDouble(PARAM_VALUE, value)
         params.putParcelableArray(PARAM_ITEMS, items)
@@ -1487,6 +1520,7 @@ object SpmUtils {
     fun viewItem(context: Context, currency: String, value: Double, items: Array<SpmItem>) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_CURRENCY, currency)
         params.putDouble(PARAM_VALUE, value)
         params.putParcelableArray(PARAM_ITEMS, items)
@@ -1513,6 +1547,7 @@ object SpmUtils {
     fun viewItemList(context: Context, itemListId: String?, itemListName: String?, items: Array<SpmItem>) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_ITEM_LIST_ID, itemListId)
         params.putString(PARAM_ITEM_LIST_NAME, itemListName)
         params.putParcelableArray(PARAM_ITEMS, items)
@@ -1540,6 +1575,7 @@ object SpmUtils {
                       promotionId: String?, promotionName: String?, items: Array<SpmItem>) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
+        params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
         params.putString(PARAM_CREATIVE_NAME, creativeName)
         params.putString(PARAM_CREATIVE_SLOT, creativeSlot)
         params.putString(PARAM_PROMOTION_ID, promotionId)
