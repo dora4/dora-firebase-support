@@ -27,16 +27,14 @@ android {
 fun DependencyHandlerScope.firebase(version: String) {
     api(platform("com.google.firebase:firebase-bom:$version"))
     api("com.google.firebase:firebase-crashlytics-ktx")
-    api("com.google.firebase:firebase-crashlytics")
     api("com.google.firebase:firebase-analytics-ktx")
-    api("com.google.firebase:firebase-analytics")
     api("com.google.firebase:firebase-config-ktx")
-    api("com.google.firebase:firebase-config")
+    api("com.google.firebase:firebase-perf-ktx")
 }
 
 dependencies {
-    implementation("com.github.dora4:dora:1.1.26")
-    firebase("32.2.2")
+    implementation("com.github.dora4:dora:1.1.38")
+    firebase("32.3.1")
 }
 
 afterEvaluate {
@@ -46,7 +44,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.dora4"
                 artifactId = "dora-firebase-support"
-                version = "1.4"
+                version = "1.5"
             }
         }
     }
