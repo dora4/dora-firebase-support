@@ -33,7 +33,7 @@ plugins {
 dependencies {
     // 扩展包必须在有主框架dora的情况下使用
     implementation("com.github.dora4:dora:1.1.46")
-    implementation("com.github.dora4:dora-firebase-support:1.7")
+    implementation("com.github.dora4:dora-firebase-support:1.8")
 }
 ```
 
