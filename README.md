@@ -32,8 +32,8 @@ plugins {
 ```kotlin
 dependencies {
     // 扩展包必须在有主框架dora的情况下使用
-    implementation("com.github.dora4:dora:1.1.60")
-    implementation("com.github.dora4:dora-firebase-support:1.8")
+    implementation("com.github.dora4:dora:1.1.61")
+    implementation("com.github.dora4:dora-firebase-support:1.9")
 }
 ```
 
@@ -60,7 +60,8 @@ plugins {
 使用SpmUtils的工具方法埋点统计，使用activity和fragment以spm开头的扩展函数也可以。
 
 ```kotlin
-spmSelectContent("查看官方公告详情")             
+spmSelectContent("查看官方公告详情")    // 通用行为统计
+spmPurchase(currency = "USD", value = 1.0) // 用户成功支付了1USD           
 ```
 
 添加以下代码检测性能。

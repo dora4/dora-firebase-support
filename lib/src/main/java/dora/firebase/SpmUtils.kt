@@ -1040,7 +1040,7 @@ object SpmUtils {
     /**
      * 此事件表示玩家在游戏中已升级。您可以用它来衡量用户群的层级分布，并确定难以完成的层级。
      */
-    fun levelUp(context: Context, level: Int, character: String? = null) {
+    fun levelUp(context: Context, level: Int? = null, character: String) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -1054,14 +1054,14 @@ object SpmUtils {
     /**
      * 此事件表示玩家在游戏中已升级。您可以用它来衡量用户群的层级分布，并确定难以完成的层级。
      */
-    fun Activity.spmLevelUp(level: Int, character: String? = null) {
+    fun Activity.spmLevelUp(level: Int? = null, character: String) {
         levelUp(this, level, character)
     }
 
     /**
      * 此事件表示玩家在游戏中已升级。您可以用它来衡量用户群的层级分布，并确定难以完成的层级。
      */
-    fun Fragment.spmLevelUp(level: Int, character: String? = null) {
+    fun Fragment.spmLevelUp(level: Int? = null, character: String) {
         levelUp(requireActivity(), level, character)
     }
 
