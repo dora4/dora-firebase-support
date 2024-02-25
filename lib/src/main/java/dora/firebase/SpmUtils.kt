@@ -754,7 +754,7 @@ object SpmUtils {
      * 此事件表示用户在电子商务结账过程中提交了付款信息。
      */
     fun addPaymentInfo(context: Context, currency: String, value: Double, coupon: String? = null,
-                       paymentType: String? = null, items: Array<SpmItem>) {
+                       paymentType: String? = null, items: Array<SpmItem>? = null) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -770,7 +770,7 @@ object SpmUtils {
      * 此事件表示用户在电子商务结账过程中提交了付款信息。
      */
     fun Activity.spmAddPaymentInfo(currency: String, value: Double, coupon: String? = null,
-                                   paymentType: String? = null, items: Array<SpmItem>) {
+                                   paymentType: String? = null, items: Array<SpmItem>? = null) {
         addPaymentInfo(this, currency, value, coupon, paymentType, items)
     }
 
@@ -778,7 +778,7 @@ object SpmUtils {
      * 此事件表示用户在电子商务结账过程中提交了付款信息。
      */
     fun Fragment.spmAddPaymentInfo(currency: String, value: Double, coupon: String? = null,
-                                   paymentType: String? = null, items: Array<SpmItem>) {
+                                   paymentType: String? = null, items: Array<SpmItem>? = null) {
         addPaymentInfo(requireActivity(), currency, value, coupon, paymentType, items)
     }
 
@@ -786,7 +786,7 @@ object SpmUtils {
      * 此事件表示用户在电子商务结账过程中提交了运费信息。
      */
     fun addShippingInfo(context: Context, currency: String, value: Double, coupon: String? = null,
-                        shippingTier: String? = null, items: Array<SpmItem>) {
+                        shippingTier: String? = null, items: Array<SpmItem>? = null) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -802,7 +802,7 @@ object SpmUtils {
      * 此事件表示用户在电子商务结账过程中提交了运费信息。
      */
     fun Activity.spmAddShippingInfo(currency: String, value: Double, coupon: String? = null,
-                        shippingTier: String? = null, items: Array<SpmItem>) {
+                        shippingTier: String? = null, items: Array<SpmItem>? = null) {
         addShippingInfo(this, currency, value, coupon, shippingTier, items)
     }
 
@@ -810,7 +810,7 @@ object SpmUtils {
      * 此事件表示用户在电子商务结账过程中提交了运费信息。
      */
     fun Fragment.spmAddShippingInfo(currency: String, value: Double, coupon: String? = null,
-                        shippingTier: String? = null, items: Array<SpmItem>) {
+                        shippingTier: String? = null, items: Array<SpmItem>? = null) {
         addShippingInfo(requireActivity(), currency, value, coupon, shippingTier, items)
     }
 
@@ -844,7 +844,7 @@ object SpmUtils {
     /**
      * 此事件表示商品已添加到心愿单。使用此事件可找出您应用中的热门礼品。
      */
-    fun addToWishlist(context: Context, currency: String, value: Double, items: Array<SpmItem>) {
+    fun addToWishlist(context: Context, currency: String, value: Double, items: Array<SpmItem>? = null) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -857,14 +857,14 @@ object SpmUtils {
     /**
      * 此事件表示商品已添加到心愿单。使用此事件可找出您应用中的热门礼品。
      */
-    fun Activity.spmAddToWishlist(currency: String, value: Double, items: Array<SpmItem>) {
+    fun Activity.spmAddToWishlist(currency: String, value: Double, items: Array<SpmItem>? = null) {
         addToWishlist(this, currency, value, items)
     }
 
     /**
      * 此事件表示商品已添加到心愿单。使用此事件可找出您应用中的热门礼品。
      */
-    fun Fragment.spmAddToWishlist(currency: String, value: Double, items: Array<SpmItem>) {
+    fun Fragment.spmAddToWishlist(currency: String, value: Double, items: Array<SpmItem>? = null) {
         addToWishlist(requireActivity(), currency, value, items)
     }
 
@@ -872,7 +872,7 @@ object SpmUtils {
      * 此事件表示用户已开始结账流程。
      */
     fun beginCheckout(context: Context, currency: String, value: Double, coupon: String? = null,
-                      items: Array<SpmItem>) {
+                      items: Array<SpmItem>? = null) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -887,7 +887,7 @@ object SpmUtils {
      * 此事件表示用户已开始结账流程。
      */
     fun Activity.spmBeginCheckout(currency: String, value: Double, coupon: String? = null,
-                      items: Array<SpmItem>) {
+                      items: Array<SpmItem>? = null) {
         beginCheckout(this, currency, value, coupon, items)
     }
 
@@ -895,7 +895,7 @@ object SpmUtils {
      * 此事件表示用户已开始结账流程。
      */
     fun Fragment.spmBeginCheckout(currency: String, value: Double, coupon: String? = null,
-                      items: Array<SpmItem>) {
+                      items: Array<SpmItem>? = null) {
         beginCheckout(requireActivity(), currency, value, coupon, items)
     }
 
@@ -903,7 +903,7 @@ object SpmUtils {
      * 此事件用于衡量用户在游戏中获得的虚拟货币奖励。 将其与 spend_virtual_currency 一起记录，以更好地了解您的
      * 虚拟经济。
      */
-    fun earnVirtualCurrency(context: Context, virtualCurrencyName: String?, value: Double?) {
+    fun earnVirtualCurrency(context: Context, virtualCurrencyName: String, value: Double? = null) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -918,7 +918,7 @@ object SpmUtils {
      * 此事件用于衡量用户在游戏中获得的虚拟货币奖励。 将其与 spend_virtual_currency 一起记录，以更好地了解您的
      * 虚拟经济。
      */
-    fun Activity.spmEarnVirtualCurrency(virtualCurrencyName: String?, value: Double?) {
+    fun Activity.spmEarnVirtualCurrency(virtualCurrencyName: String, value: Double? = null) {
         earnVirtualCurrency(this, virtualCurrencyName, value)
     }
 
@@ -926,7 +926,7 @@ object SpmUtils {
      * 此事件用于衡量用户在游戏中获得的虚拟货币奖励。 将其与 spend_virtual_currency 一起记录，以更好地了解您的
      * 虚拟经济。
      */
-    fun Fragment.spmEarnVirtualCurrency(virtualCurrencyName: String?, value: Double?) {
+    fun Fragment.spmEarnVirtualCurrency(virtualCurrencyName: String, value: Double? = null) {
         earnVirtualCurrency(requireActivity(), virtualCurrencyName, value)
     }
 
@@ -962,7 +962,7 @@ object SpmUtils {
     /**
      * 在用户加入群组（例如公会、团队或家庭）时记录此事件。使用此事件可分析特定群组或社交功能的受欢迎程度。
      */
-    fun joinGroup(context: Context, groupId: String?) {
+    fun joinGroup(context: Context, groupId: String) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -973,21 +973,21 @@ object SpmUtils {
     /**
      * 在用户加入群组（例如公会、团队或家庭）时记录此事件。使用此事件可分析特定群组或社交功能的受欢迎程度。
      */
-    fun Activity.spmJoinGroup(groupId: String?) {
+    fun Activity.spmJoinGroup(groupId: String) {
         joinGroup(this, groupId)
     }
 
     /**
      * 在用户加入群组（例如公会、团队或家庭）时记录此事件。使用此事件可分析特定群组或社交功能的受欢迎程度。
      */
-    fun Fragment.spmJoinGroup(groupId: String?) {
+    fun Fragment.spmJoinGroup(groupId: String) {
         joinGroup(requireActivity(), groupId)
     }
 
     /**
      * 此事件表示玩家已达到游戏关卡。
      */
-    fun levelEnd(context: Context, levelName: String?, success: Boolean?) {
+    fun levelEnd(context: Context, levelName: String, success: Boolean? = null) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -1001,21 +1001,21 @@ object SpmUtils {
     /**
      * 此事件表示玩家已达到游戏关卡。
      */
-    fun Activity.spmLevelEnd(levelName: String?, success: Boolean?) {
+    fun Activity.spmLevelEnd(levelName: String, success: Boolean? = null) {
         levelEnd(this, levelName, success)
     }
 
     /**
      * 此事件表示玩家已达到游戏关卡。
      */
-    fun Fragment.spmLevelEnd(levelName: String?, success: Boolean?) {
+    fun Fragment.spmLevelEnd(levelName: String, success: Boolean? = null) {
         levelEnd(requireActivity(), levelName, success)
     }
 
     /**
      * 此事件表示玩家已在游戏中开始一个关卡。
      */
-    fun levelStart(context: Context, levelName: String?) {
+    fun levelStart(context: Context, levelName: String) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -1026,21 +1026,21 @@ object SpmUtils {
     /**
      * 此事件表示玩家已在游戏中开始一个关卡。
      */
-    fun Activity.spmLevelStart(levelName: String?) {
+    fun Activity.spmLevelStart(levelName: String) {
         levelStart(this, levelName)
     }
 
     /**
      * 此事件表示玩家已在游戏中开始一个关卡。
      */
-    fun Fragment.spmLevelStart(levelName: String?) {
+    fun Fragment.spmLevelStart(levelName: String) {
         levelStart(requireActivity(), levelName)
     }
 
     /**
      * 此事件表示玩家在游戏中已升级。您可以用它来衡量用户群的层级分布，并确定难以完成的层级。
      */
-    fun levelUp(context: Context, level: Int?, character: String?) {
+    fun levelUp(context: Context, level: Int, character: String? = null) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -1054,21 +1054,21 @@ object SpmUtils {
     /**
      * 此事件表示玩家在游戏中已升级。您可以用它来衡量用户群的层级分布，并确定难以完成的层级。
      */
-    fun Activity.spmLevelUp(level: Int?, character: String?) {
+    fun Activity.spmLevelUp(level: Int, character: String? = null) {
         levelUp(this, level, character)
     }
 
     /**
      * 此事件表示玩家在游戏中已升级。您可以用它来衡量用户群的层级分布，并确定难以完成的层级。
      */
-    fun Fragment.spmLevelUp(level: Int?, character: String?) {
+    fun Fragment.spmLevelUp(level: Int, character: String? = null) {
         levelUp(requireActivity(), level, character)
     }
 
     /**
      * 发送此事件表示用户已登录您的网站或应用。
      */
-    fun login(context: Context, method: String?) {
+    fun login(context: Context, method: String? = null) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -1079,21 +1079,21 @@ object SpmUtils {
     /**
      * 发送此事件表示用户已登录您的网站或应用。
      */
-    fun Activity.spmLogin(method: String?) {
+    fun Activity.spmLogin(method: String? = null) {
         login(this, method)
     }
 
     /**
      * 发送此事件表示用户已登录您的网站或应用。
      */
-    fun Fragment.spmLogin(method: String?) {
+    fun Fragment.spmLogin(method: String? = null) {
         login(requireActivity(), method)
     }
 
     /**
      * 在用户发布得分时发送此事件。使用此事件可了解用户在您游戏中的表现，并将最高得分与受众群体或行为关联起来。
      */
-    fun postScore(context: Context, score: Long, level: Int?, character: String?) {
+    fun postScore(context: Context, score: Long, level: Int? = null, character: String? = null) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -1108,22 +1108,22 @@ object SpmUtils {
     /**
      * 在用户发布得分时发送此事件。使用此事件可了解用户在您游戏中的表现，并将最高得分与受众群体或行为关联起来。
      */
-    fun Activity.spmPostScore(score: Long, level: Int?, character: String?) {
+    fun Activity.spmPostScore(score: Long, level: Int? = null, character: String? = null) {
         postScore(this, score, level, character)
     }
 
     /**
      * 在用户发布得分时发送此事件。使用此事件可了解用户在您游戏中的表现，并将最高得分与受众群体或行为关联起来。
      */
-    fun Fragment.spmPostScore(score: Long, level: Int?, character: String?) {
+    fun Fragment.spmPostScore(score: Long, level: Int? = null, character: String? = null) {
         postScore(requireActivity(), score, level, character)
     }
 
     /**
      * 此事件表示用户已购买一件或多件商品。
      */
-    fun purchase(context: Context, currency: String, transactionId: String, value: Double,
-                 coupon: String?, shipping: Double?, tax: Double?, items: Array<SpmItem>) {
+    fun purchase(context: Context, currency: String, transactionId: String? = null, value: Double,
+                 coupon: String? = null, shipping: Double? = null, tax: Double? = null, items: Array<SpmItem>? = null) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -1144,24 +1144,24 @@ object SpmUtils {
     /**
      * 此事件表示用户已购买一件或多件商品。
      */
-    fun Activity.spmPurchase(currency: String, transactionId: String, value: Double,
-                 coupon: String?, shipping: Double?, tax: Double?, items: Array<SpmItem>) {
+    fun Activity.spmPurchase(currency: String, transactionId: String? = null, value: Double,
+                 coupon: String? = null, shipping: Double? = null, tax: Double? = null, items: Array<SpmItem>? = null) {
         purchase(this, currency, transactionId, value, coupon, shipping, tax, items)
     }
 
     /**
      * 此事件表示用户已购买一件或多件商品。
      */
-    fun Fragment.spmPurchase(currency: String, transactionId: String, value: Double,
-                 coupon: String?, shipping: Double?, tax: Double?, items: Array<SpmItem>) {
+    fun Fragment.spmPurchase(currency: String, transactionId: String? = null, value: Double,
+                 coupon: String? = null, shipping: Double? = null, tax: Double? = null, items: Array<SpmItem>? = null) {
         purchase(requireActivity(), currency, transactionId, value, coupon, shipping, tax, items)
     }
 
     /**
      * 此事件表示向用户退回一件或多件商品的款项。
      */
-    fun refund(context: Context, currency: String, transactionId: String, value: Double,
-                 coupon: String?, shipping: Double?, tax: Double?, items: Array<SpmItem>) {
+    fun refund(context: Context, currency: String, transactionId: String? = null, value: Double,
+                 coupon: String? = null, shipping: Double? = null, tax: Double? = null, items: Array<SpmItem>? = null) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -1182,16 +1182,16 @@ object SpmUtils {
     /**
      * 此事件表示向用户退回一件或多件商品的款项。
      */
-    fun Activity.spmRefund(currency: String, transactionId: String, value: Double,
-               coupon: String?, shipping: Double?, tax: Double?, items: Array<SpmItem>) {
+    fun Activity.spmRefund(currency: String, transactionId: String? = null, value: Double,
+               coupon: String? = null, shipping: Double? = null, tax: Double? = null, items: Array<SpmItem>? = null) {
         refund(this, currency, transactionId, value, coupon, shipping, tax, items)
     }
 
     /**
      * 此事件表示向用户退回一件或多件商品的款项。
      */
-    fun Fragment.spmRefund(currency: String, transactionId: String, value: Double,
-               coupon: String?, shipping: Double?, tax: Double?, items: Array<SpmItem>) {
+    fun Fragment.spmRefund(currency: String, transactionId: String? = null, value: Double,
+               coupon: String? = null, shipping: Double? = null, tax: Double? = null, items: Array<SpmItem>? = null) {
         refund(requireActivity(), currency, transactionId, value, coupon, shipping, tax, items)
     }
 
@@ -1253,7 +1253,7 @@ object SpmUtils {
     /**
      * 此事件表示用户选择了某个类型的某些内容。此事件有助于您了解您网站或应用中的热门内容和内容类别。
      */
-    fun selectContent(context: Context, contentType: String?) {
+    fun selectContent(context: Context, contentType: String) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -1264,21 +1264,21 @@ object SpmUtils {
     /**
      * 此事件表示用户选择了某个类型的某些内容。此事件有助于您了解您网站或应用中的热门内容和内容类别。
      */
-    fun Activity.spmSelectContent(contentType: String?) {
+    fun Activity.spmSelectContent(contentType: String) {
         selectContent(this, contentType)
     }
 
     /**
      * 此事件表示用户选择了某个类型的某些内容。此事件有助于您了解您网站或应用中的热门内容和内容类别。
      */
-    fun Fragment.spmSelectContent(contentType: String?) {
+    fun Fragment.spmSelectContent(contentType: String) {
         selectContent(requireActivity(), contentType)
     }
 
     /**
      * 此事件表示从列表中选择了商品。
      */
-    fun selectItem(context: Context, itemListId: String?, itemListName: String?, items: Array<SpmItem>) {
+    fun selectItem(context: Context, itemListId: String? = null, itemListName: String, items: Array<SpmItem>? = null) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -1291,22 +1291,22 @@ object SpmUtils {
     /**
      * 此事件表示从列表中选择了商品。
      */
-    fun Activity.spmSelectItem(itemListId: String?, itemListName: String?, items: Array<SpmItem>) {
+    fun Activity.spmSelectItem(itemListId: String? = null, itemListName: String, items: Array<SpmItem>? = null) {
         selectItem(this, itemListId, itemListName, items)
     }
 
     /**
      * 此事件表示从列表中选择了商品。
      */
-    fun Fragment.spmSelectItem(itemListId: String?, itemListName: String?, items: Array<SpmItem>) {
+    fun Fragment.spmSelectItem(itemListId: String? = null, itemListName: String, items: Array<SpmItem>? = null) {
         selectItem(requireActivity(), itemListId, itemListName, items)
     }
 
     /**
      * 此事件表示从列表中选择了推广活动。
      */
-    fun selectPromotion(context: Context, creativeName: String?, creativeSlot: String?,
-                        promotionId: String?, promotionName: String?, items: Array<SpmItem>) {
+    fun selectPromotion(context: Context, creativeName: String? = null, creativeSlot: String? = null,
+                        promotionId: String? = null, promotionName: String, items: Array<SpmItem>? = null) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -1321,16 +1321,16 @@ object SpmUtils {
     /**
      * 此事件表示从列表中选择了推广活动。
      */
-    fun Activity.spmSelectPromotion(creativeName: String?, creativeSlot: String?,
-                        promotionId: String?, promotionName: String?, items: Array<SpmItem>) {
+    fun Activity.spmSelectPromotion(creativeName: String? = null, creativeSlot: String? = null,
+                        promotionId: String? = null, promotionName: String, items: Array<SpmItem>? = null) {
         selectPromotion(this, creativeName, creativeSlot, promotionId, promotionName, items)
     }
 
     /**
      * 此事件表示从列表中选择了推广活动。
      */
-    fun Fragment.spmSelectPromotion(creativeName: String?, creativeSlot: String?,
-                        promotionId: String?, promotionName: String?, items: Array<SpmItem>) {
+    fun Fragment.spmSelectPromotion(creativeName: String? = null, creativeSlot: String? = null,
+                        promotionId: String? = null, promotionName: String, items: Array<SpmItem>? = null) {
         selectPromotion(requireActivity(), creativeName, creativeSlot, promotionId, promotionName,
             items)
     }
@@ -1338,7 +1338,7 @@ object SpmUtils {
     /**
      * 在用户分享了内容时使用此事件。
      */
-    fun share(context: Context, method: String?, contentType: String?, itemId: String?) {
+    fun share(context: Context, method: String? = null, contentType: String? = null, itemId: String? = null) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -1351,21 +1351,21 @@ object SpmUtils {
     /**
      * 在用户分享了内容时使用此事件。
      */
-    fun Activity.spmShare(method: String?, contentType: String?, itemId: String?) {
+    fun Activity.spmShare(method: String? = null, contentType: String? = null, itemId: String? = null) {
         share(this, method, contentType, itemId)
     }
 
     /**
      * 在用户分享了内容时使用此事件。
      */
-    fun Fragment.spmShare(method: String?, contentType: String?, itemId: String?) {
+    fun Fragment.spmShare(method: String? = null, contentType: String? = null, itemId: String? = null) {
         share(requireActivity(), method, contentType, itemId)
     }
 
     /**
      * 此事件表示用户已注册帐号。使用此事件可了解登录用户和退出用户的不同行为。
      */
-    fun signUp(context: Context, method: String?) {
+    fun signUp(context: Context, method: String? = null) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -1376,21 +1376,21 @@ object SpmUtils {
     /**
      * 此事件表示用户已注册帐号。使用此事件可了解登录用户和退出用户的不同行为。
      */
-    fun Activity.spmSignUp(method: String?) {
+    fun Activity.spmSignUp(method: String? = null) {
         signUp(this, method)
     }
 
     /**
      * 此事件表示用户已注册帐号。使用此事件可了解登录用户和退出用户的不同行为。
      */
-    fun Fragment.spmSignUp(method: String?) {
+    fun Fragment.spmSignUp(method: String? = null) {
         signUp(requireActivity(), method)
     }
 
     /**
      * 此事件衡量的是应用内虚拟商品的销售情况，有助于您确定哪些虚拟商品最受欢迎。
      */
-    fun spendVirtualCurrency(context: Context, value: Double, virtualCurrencyName: String, itemName: String?) {
+    fun spendVirtualCurrency(context: Context, value: Double, virtualCurrencyName: String, itemName: String? = null) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -1403,14 +1403,14 @@ object SpmUtils {
     /**
      * 此事件衡量的是应用内虚拟商品的销售情况，有助于您确定哪些虚拟商品最受欢迎。
      */
-    fun Activity.spmSpendVirtualCurrency(value: Double, virtualCurrencyName: String, itemName: String?) {
+    fun Activity.spmSpendVirtualCurrency(value: Double, virtualCurrencyName: String, itemName: String? = null) {
         spendVirtualCurrency(this, value, virtualCurrencyName, itemName)
     }
 
     /**
      * 此事件衡量的是应用内虚拟商品的销售情况，有助于您确定哪些虚拟商品最受欢迎。
      */
-    fun Fragment.spmSpendVirtualCurrency(value: Double, virtualCurrencyName: String, itemName: String?) {
+    fun Fragment.spmSpendVirtualCurrency(value: Double, virtualCurrencyName: String, itemName: String? = null) {
         spendVirtualCurrency(requireActivity(), value, virtualCurrencyName, itemName)
     }
 
@@ -1544,7 +1544,7 @@ object SpmUtils {
     /**
      * 向用户展示某类商品的列表时记录此事件。
      */
-    fun viewItemList(context: Context, itemListId: String?, itemListName: String?, items: Array<SpmItem>) {
+    fun viewItemList(context: Context, itemListId: String? = null, itemListName: String, items: Array<SpmItem>? = null) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -1557,22 +1557,22 @@ object SpmUtils {
     /**
      * 向用户展示某类商品的列表时记录此事件。
      */
-    fun Activity.spmViewItemList(itemListId: String?, itemListName: String?, items: Array<SpmItem>) {
+    fun Activity.spmViewItemList(itemListId: String? = null, itemListName: String, items: Array<SpmItem>? = null) {
         viewItemList(this, itemListId, itemListName, items)
     }
 
     /**
      * 向用户展示某类商品的列表时记录此事件。
      */
-    fun Fragment.spmViewItemList(itemListId: String?, itemListName: String?, items: Array<SpmItem>) {
+    fun Fragment.spmViewItemList(itemListId: String? = null, itemListName: String, items: Array<SpmItem>? = null) {
         viewItemList(requireActivity(), itemListId, itemListName, items)
     }
 
     /**
      * 此事件表示从列表查看了推广活动。
      */
-    fun viewPromotion(context: Context, creativeName: String?, creativeSlot: String?,
-                      promotionId: String?, promotionName: String?, items: Array<SpmItem>) {
+    fun viewPromotion(context: Context, creativeName: String? = null, creativeSlot: String? = null,
+                      promotionId: String? = null, promotionName: String, items: Array<SpmItem>? = null) {
         val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
         val params = Bundle()
         params.putString(PARAM_DEVICE_ID, RomUtils.getDeviceId())
@@ -1587,16 +1587,16 @@ object SpmUtils {
     /**
      * 此事件表示从列表查看了推广活动。
      */
-    fun Activity.spmViewPromotion(creativeName: String?, creativeSlot: String?,
-                      promotionId: String?, promotionName: String?, items: Array<SpmItem>) {
+    fun Activity.spmViewPromotion(creativeName: String? = null, creativeSlot: String? = null,
+                      promotionId: String? = null, promotionName: String, items: Array<SpmItem>? = null) {
         viewPromotion(this, creativeName, creativeSlot, promotionId, promotionName, items)
     }
 
     /**
      * 此事件表示从列表查看了推广活动。
      */
-    fun Fragment.spmViewPromotion(creativeName: String?, creativeSlot: String?,
-                      promotionId: String?, promotionName: String?, items: Array<SpmItem>) {
+    fun Fragment.spmViewPromotion(creativeName: String? = null, creativeSlot: String? = null,
+                      promotionId: String? = null, promotionName: String, items: Array<SpmItem>? = null) {
         viewPromotion(requireActivity(), creativeName, creativeSlot, promotionId, promotionName, items)
     }
 }
