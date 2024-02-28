@@ -61,6 +61,8 @@ plugins {
 
 ```kotlin
 spmSelectContent("查看官方公告详情")    // 通用行为统计
+spmLogin("google")    // 谷歌登录
+spmSignUp("huawei")    // 华为应用市场渠道包注册
 spmPurchase(currency = "USD", value = 1.0) // 用户成功支付了1USD           
 ```
 
