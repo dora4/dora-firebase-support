@@ -2,7 +2,6 @@ package dora.firebase
 
 import android.app.Activity
 import android.content.Context
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.firebase.analytics.FirebaseAnalytics
@@ -749,6 +748,37 @@ object SpmUtils {
      * 示例：Ground
      */
     const val PARAM_SHIPPING_TIER = FirebaseAnalytics.Param.SHIPPING_TIER
+
+    /**
+     * 此事件表示用户看到了广告。
+     */
+    fun adImpression(context: Context, platformName: String, impressionData: ImpressionData? = null) {
+        val firebaseAnalytics = FirebaseAnalytics.getInstance(context)
+        val params = Bundle()
+        params.putString(FirebaseAnalytics.Param.AD_PLATFORM, platformName)
+        impressionData?.apply {
+            params.putString(FirebaseAnalytics.Param.AD_UNIT_NAME, adUnitId)
+            params.putString(FirebaseAnalytics.Param.AD_FORMAT, format?.label)
+            params.putString(FirebaseAnalytics.Param.AD_SOURCE, networkName)
+            params.putDouble(FirebaseAnalytics.Param.VALUE, revenue)
+            params.putString(FirebaseAnalytics.Param.CURRENCY, currency)
+        }
+        firebaseAnalytics.logEvent(EVENT_AD_IMPRESSION, params)
+    }
+
+    /**
+     * 此事件表示用户看到了广告。
+     */
+    fun Activity.spmAdImpression(platformName: String, impressionData: ImpressionData? = null) {
+        adImpression(this, platformName, impressionData)
+    }
+
+    /**
+     * 此事件表示用户看到了广告。
+     */
+    fun Fragment.spmAdImpression(platformName: String, impressionData: ImpressionData? = null) {
+        adImpression(requireActivity(), platformName, impressionData)
+    }
 
     /**
      * 此事件表示用户在电子商务结账过程中提交了付款信息。

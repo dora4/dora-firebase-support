@@ -33,7 +33,7 @@ fun DependencyHandlerScope.firebase(version: String) {
 }
 
 dependencies {
-    implementation("com.github.dora4:dora:1.1.62")
+    implementation("com.github.dora4:dora:1.2.5")
     firebase("32.6.0")
 }
 
@@ -44,7 +44,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.dora4"
                 artifactId = "dora-firebase-support"
-                version = "1.11"
+                version = "1.12"
             }
         }
     }
