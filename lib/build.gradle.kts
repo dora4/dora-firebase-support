@@ -44,7 +44,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.dora4"
                 artifactId = "dora-firebase-support"
-                version = "1.12"
+                version = "1.13"
             }
         }
     }

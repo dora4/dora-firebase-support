@@ -32,8 +32,8 @@ plugins {
 ```kotlin
 dependencies {
     // 扩展包必须在有主框架dora的情况下使用
-    implementation("com.github.dora4:dora:1.2.3")
-    implementation("com.github.dora4:dora-firebase-support:1.11")
+    implementation("com.github.dora4:dora:1.2.5")
+    implementation("com.github.dora4:dora-firebase-support:1.13")
 }
 ```
 
@@ -63,7 +63,8 @@ plugins {
 spmSelectContent("查看官方公告详情")    // 通用行为统计
 spmLogin("google")    // 谷歌登录
 spmSignUp("huawei")    // 华为应用市场渠道包注册
-spmPurchase(currency = "USD", value = 1.0) // 用户成功支付了1USD           
+spmPurchase(currency = "USD", value = 1.0) // 衡量购买收入，用户成功支付了1USD      
+spmAdImpression(platformName = "", impressionData = null)   // 衡量广告收入
 ```
 
 添加以下代码检测性能。
