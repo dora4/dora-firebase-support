@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "dora.lifecycle.firebase"
-    compileSdk = 33
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 21
@@ -33,7 +33,7 @@ fun DependencyHandlerScope.firebase(version: String) {
 }
 
 dependencies {
-    implementation("com.github.dora4:dora:1.3.14")
+    implementation("com.github.dora4:dora:1.3.53")
     firebase("32.6.0")
 }
 
@@ -44,7 +44,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.dora4"
                 artifactId = "dora-firebase-support"
-                version = "1.14"
+                version = "1.15"
             }
         }
     }
